@@ -1,7 +1,7 @@
 import React from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import { Pressable, Image } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -27,31 +27,51 @@ export default function TabLayout() {
         headerShown: useClientOnlyValue(false, true),
       }}>
       <Tabs.Screen
-        name="index"
+        name="Adicionar"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          title: 'Adicionar',
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/images/add-contact.png')}
+              style={{
+                width: 24,
+                height: 24,
+              }}
+              resizeMode="contain"
+            />
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="Lista"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'Lista',
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/images/wishlist.png')}
+              style={{
+                width: 24,
+                height: 24,
+              }}
+              resizeMode="contain"
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Favoritos"
+        options={{
+          title: 'Favoritos',
+          tabBarIcon: ({ focused }) => (
+            <Image
+              source={require('../../assets/images/heart.png')}
+              style={{
+                width: 24,
+                height: 24,
+              }}
+              resizeMode="contain"
+            />
+          ),
         }}
       />
     </Tabs>
